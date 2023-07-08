@@ -1,0 +1,11 @@
+[color]
+	ui = auto
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status -sb
+	last = log -1 HEAD
+	cm = commit -m
+	ap = add -p
+	ca = commit --amend
