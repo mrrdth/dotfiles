@@ -31,7 +31,6 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set ignorecase
-execute pathogen#infect()
 filetype plugin indent on
 "===================="
 " Some basic options "

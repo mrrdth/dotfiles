@@ -9,7 +9,7 @@ link() {
   local dest="$2"
   mkdir -p "$(dirname "$dest")"
   if [ -L "$dest" ]; then
-  #  rm "$dest"
+    rm "$dest"
   fi
   echo "$dest -> $path"
   ln -fs "$path" "$dest"

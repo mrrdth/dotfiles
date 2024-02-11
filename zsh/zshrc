@@ -87,7 +87,6 @@ __git_files () {
 export NVM_DIR="/Users/meredith/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-source /etc/bash_completion.d/hgd
 export PATH="${PATH}:${HOME}/bin"
 
 fixup_ssh_auth_sock() {
