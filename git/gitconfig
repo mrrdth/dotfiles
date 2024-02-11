@@ -3,12 +3,21 @@
 	email = meredithlane91@gmail.com
 
 [core]
-	excludesfile = ~/.global-gitignore
+	excludesfile = ~/.gitignore
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
 
 [color]
 	ui = auto
 
 [alias]
+  ll = log --oneline
+  last = log -1 HEAD --stat
+  se = !git rev-list --all | xargs git grep -F
 	co = checkout
 	br = branch
 	ci = commit
@@ -17,3 +26,9 @@
 	cm = commit -m
 	ap = add -p
 	ca = commit --amend
+  new-branch = checkout -b
+  show-branch = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+  lg = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30
+
+[push]
+	autoSetupRemote = true
