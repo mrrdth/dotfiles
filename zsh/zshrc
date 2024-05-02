@@ -67,7 +67,6 @@ alias vimconfig="vim ~/.vimrc"
 alias gitconfig="vim ~/.gitconfig"
 alias ssh-tmux="~/bin/ssh-tmux"
 alias chromium="$HOME/scripts/./chromium.sh"
-alias pbcopy="$HOME/pbcopy.sh"
 alias gitrc="git rebase --continue && git rebase-update --no-fetch"
 
 alias ls="ls -G"
@@ -105,3 +104,8 @@ then
   autoload -U add-zsh-hook
   add-zsh-hook preexec fixup_ssh_auth_sock
 fi
+
+# Ruby stuff - https://jekyllrb.com/docs/installation/macos/
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+chruby ruby-3.1.3
