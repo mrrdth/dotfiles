@@ -17,9 +17,9 @@ if isdirectory(expand('$HOME/.vim/bundle/Vundle.vim'))
   Plugin 'honza/vim-snippets'
   Plugin 'epeli/slimux'
   Plugin 'ctrlp.vim'
-  Plugin 'FelikZ/ctrlp-py-matcher'
   Plugin 'vim-airline/vim-airline'
   Plugin 'Chiel92/vim-autoformat'
+  Plugin 'dracula/vim', { 'name': 'dracula' }
   call vundle#end()
 else
   echomsg 'Vundle is not installed. You can install Vundle from'
@@ -39,7 +39,7 @@ filetype plugin indent on
 syntax enable
 let g:solarized_termcolors=256
 set background=dark
-colorscheme solarized
+colorscheme dracula
 " Automatically change the working path to the path of the current file
 autocmd BufNewFile,BufEnter * silent! lcd %:p:h
 
@@ -115,8 +115,18 @@ map <Leader>k :SlimuxSendKeysLast<CR>
 let g:slimux_select_from_current_window = 1
 " Make Ctrl-P tractable
 set grepprg=ag\ --nogroup\ --nocolor
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden --ignore .git --ignore .svn --ignore .hg --ignore .DS_Store --ignore "**/*.pyc" --ignore out --ignore out_chromeos --ignore out_crgoma --ignore out_crosgoma --ignore .git5_specs --ignore review -g ""'
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+"" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
 let g:ctrlp_by_filename = 1
 let g:ctrlp_lazy_update = 250
 let g:ctrlp_clear_cache_on_exit = 0
